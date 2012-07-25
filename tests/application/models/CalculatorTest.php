@@ -31,5 +31,10 @@ class CalculatorTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals('7', $actual);
 	}
 
+	public function testShouldAWhen9Plus1() {
+		$actual =  $this->Calculator->calculate('9+1');
+		$this->assertEquals('A', $actual);
+	}
+	
 }
 ?>
