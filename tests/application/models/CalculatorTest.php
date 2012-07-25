@@ -46,5 +46,10 @@ class CalculatorTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals('C', $actual);
 	}
 	
+	public function testShouldAWhen8Plus7() {
+		$actual =  $this->Calculator->calculate('6+7');
+		$this->assertEquals('D', $actual);
+	}
+	
 }
 ?>

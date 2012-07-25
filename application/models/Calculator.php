@@ -10,6 +10,8 @@ class Calculator {
 			return "B";
 		} else if ($result == 12) {
 			return "C";
+		} else if ($result == 13) {
+			return "D";
 		} else {
 			return $result;
 		}	
