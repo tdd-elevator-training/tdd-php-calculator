@@ -36,5 +36,10 @@ class CalculatorTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals('A', $actual);
 	}
 	
+	public function testShouldAWhen8Plus3() {
+		$actual =  $this->Calculator->calculate('8+3');
+		$this->assertEquals('B', $actual);
+	}
+	
 }
 ?>
