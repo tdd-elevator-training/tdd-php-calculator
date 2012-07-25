@@ -96,5 +96,11 @@ class CalculatorTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals('132', $actual);
 	}
 	
+	public function testShould101When100Plus1() {
+		$actual =  $this->Calculator->calculate('100+1');
+		$this->assertEquals('101', $actual);
+	}
+	
+	
 }
 ?>
