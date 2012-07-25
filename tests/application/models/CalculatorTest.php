@@ -56,5 +56,10 @@ class CalculatorTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals('E', $actual);
 	}
 	
+	public function testShouldFWhen5PlusA() {
+		$actual =  $this->Calculator->calculate('5+A');
+		$this->assertEquals('F', $actual);
+	}
+	
 }
 ?>
