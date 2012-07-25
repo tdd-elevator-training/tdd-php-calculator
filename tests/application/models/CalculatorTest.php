@@ -25,6 +25,11 @@ class CalculatorTest extends PHPUnit_Framework_TestCase {
  		$actual =  $this->Calculator->calculate('2+2');
  		$this->assertEquals('4', $actual);
 	}
+	
+	public function testShould7When3Plus4() {
+		$actual =  $this->Calculator->calculate('3+4');
+		$this->assertEquals('7', $actual);
+	}
 
 }
 ?>

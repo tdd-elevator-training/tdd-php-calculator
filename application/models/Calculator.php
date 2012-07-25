@@ -1,14 +1,10 @@
 <?php
 
 
-class Calculator {
-
-	public function __construct() {
-
-	}
-	
+class Calculator {	
 	public function calculate($expression) {
-		return '4';	
+		return substr($expression, 0, 1) + substr($expression, 1, 2);
+
 	}
 }
 
