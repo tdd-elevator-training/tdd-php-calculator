@@ -6,17 +6,21 @@ class Calculator {
 		preg_match_all("/[0-9A-F]+/", $expression, $out);
 		
 		$sum = $this->hexToInt($out[0][0]) + 
-				  $this->hexToInt($out[0][1]);
-					
-		$big = (int)($sum / 16);
-		if ($big <> 0) { 
-			return $this->toHex($big).$this->toHex($sum % 16); 
+			   $this->hexToInt($out[0][1]);					
+		
+		return $this->toHex($sum);	
+	}
+
+	private function toHex($int) {
+		if ($int / 16 < 1) {
+			return $this->intToHex($int);
 		}
 		
-		return $this->toHex($sum); 		
+		$high = (int)($int / 16);
+		return $this->toHex($high).$this->intToHex($int % 16);
 	}
 	
-	private function toHex($int) {		
+	private function intToHex($int) {		
 		if ($int == 10) return "A";
 		if ($int == 11) return "B";
 		if ($int == 12) return "C";

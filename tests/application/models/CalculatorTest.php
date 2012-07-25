@@ -91,5 +91,10 @@ class CalculatorTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals('44', $actual);
 	}
 	
+	public function testShould132When99Plus99() {
+		$actual =  $this->Calculator->calculate('99+99');
+		$this->assertEquals('132', $actual);
+	}
+	
 }
 ?>
