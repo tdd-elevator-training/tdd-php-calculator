@@ -8,7 +8,9 @@ class Calculator {
 			return "A";
 		} else if ($result == 11) {
 			return "B";
-		} else { 
+		} else if ($result == 12) {
+			return "C";
+		} else {
 			return $result;
 		}	
 	}
