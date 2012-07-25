@@ -5,18 +5,15 @@ class Calculator {
 	public function calculate($expression) {
 		preg_match_all("/[0-9A-F]+/", $expression, $out);
 		
-		$result = $this->hexToInt($out[0][0]) + 
+		$sum = $this->hexToInt($out[0][0]) + 
 				  $this->hexToInt($out[0][1]);
 					
-		if ($result >= 32) {
-			return '2'.$this->toHex($result - 32);
-		} else if ($result > 16) {
-			return '1'.$this->toHex($result - 16);			
-		} else if ($result >= 10) {
-			return $this->toHex($result);
-		} else { 
-			return $result;
-		}		
+		$big = (int)($sum / 16);
+		if ($big <> 0) { 
+			return $this->toHex($big).$this->toHex($sum % 16); 
+		}
+		
+		return $this->toHex($sum); 		
 	}
 	
 	private function toHex($int) {		
