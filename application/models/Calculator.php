@@ -10,7 +10,9 @@ class Calculator {
 		
 		if ($result >= 10 & $result <= 15) return $this->toHex($result);
 		
-		if ($result > 16) {
+		if ($result >= 32) {
+			$result = '2'.$this->toHex($result - 32);
+		} else if ($result > 16) {
 			$result = '1'.$this->toHex($result - 16);			
 		}
 		return $result;	
@@ -27,17 +29,17 @@ class Calculator {
 	}
 	
 	private function hexToInt($hex) {
+		if (strlen($hex) == 2) {
+			return 16*$this->hexToInt(substr($hex, 0, 1)) + $this->hexToInt(substr($hex, 1, 1));
+		}
+		
 		if (is_numeric($hex)) return $hex; 
 		if ($hex == "A") return 10;
 		if ($hex == "B") return 11;
 		if ($hex == "C") return 12;
 		if ($hex == "D") return 13;
 		if ($hex == "E") return 14;
-		if ($hex == "F") return 15;
-		
-		if (strlen($hex) == 2) {
-			return 16*$this->hexToInt(substr($hex, 0, 1)) + $this->hexToInt(substr($hex, 1, 1));
-		}
+		if ($hex == "F") return 15;		
 	}
 }
 

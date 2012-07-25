@@ -81,5 +81,10 @@ class CalculatorTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals('1E', $actual);
 	}
 	
+	public function testShould22When11Plus11() {
+		$actual =  $this->Calculator->calculate('11+11');
+		$this->assertEquals('22', $actual);
+	}
+	
 }
 ?>
