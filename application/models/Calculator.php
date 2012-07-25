@@ -11,13 +11,19 @@ class Calculator {
 		if ($result == 13) return "D";
 		if ($result == 14) return "E";
 		if ($result == 15) return "F";		
+		
+		if ($result > 16) {
+			$result = 10 + $result - 16;			
+		}
 		return $result;	
 	}
 	
 	private function hexToInt($hex) {
 		if (is_numeric($hex)) return $hex; 
-		if ($hex == "A") return 10;	
+		if ($hex == "A") return 10;
+		if ($hex == "B") return 11;
 		if ($hex == "D") return 13;
+		if ($hex == "E") return 14;
 	}
 }
 

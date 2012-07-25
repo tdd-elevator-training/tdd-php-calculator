@@ -66,5 +66,10 @@ class CalculatorTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals('F', $actual);
 	}
 	
+	public function testShould19WhenBPlusE() {
+		$actual =  $this->Calculator->calculate('B+E');
+		$this->assertEquals('19', $actual);
+	}
+	
 }
 ?>
