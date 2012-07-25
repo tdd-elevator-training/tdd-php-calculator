@@ -3,8 +3,11 @@
 
 class Calculator {	
 	public function calculate($expression) {
-		$result = $this->hexToInt(substr($expression, 0, 1)) + 
-				  $this->hexToInt(substr($expression, 2, 1));
+		preg_match_all("/[0-9A-F]+/", $expression, $out);
+		
+		$result = $this->hexToInt($out[0][0]) + 
+				  $this->hexToInt($out[0][1]);
+		
 		if ($result >= 10 & $result <= 15) return $this->toHex($result);
 		
 		if ($result > 16) {
@@ -31,6 +34,10 @@ class Calculator {
 		if ($hex == "D") return 13;
 		if ($hex == "E") return 14;
 		if ($hex == "F") return 15;
+		
+		if (strlen($hex) == 2) {
+			return 16*$this->hexToInt(substr($hex, 0, 1)) + $this->hexToInt(substr($hex, 1, 1));
+		}
 	}
 }
 

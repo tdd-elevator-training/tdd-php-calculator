@@ -76,5 +76,10 @@ class CalculatorTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals('1B', $actual);
 	}
 	
+	public function testShould1EWhen1CPlus2() {
+		$actual =  $this->Calculator->calculate('1C+2');
+		$this->assertEquals('1E', $actual);
+	}
+	
 }
 ?>
