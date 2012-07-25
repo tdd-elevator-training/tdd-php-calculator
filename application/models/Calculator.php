@@ -12,6 +12,8 @@ class Calculator {
 			return "C";
 		} else if ($result == 13) {
 			return "D";
+		} else if ($result == 14) {
+			return "E";
 		} else {
 			return $result;
 		}	
