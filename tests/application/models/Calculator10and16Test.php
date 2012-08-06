@@ -158,7 +158,20 @@ class Calculator10and16Test extends PHPUnit_Framework_TestCase {
 	}
 **/
 	
+	public function testShouldGWhenDPlus3Base17() {
+		$actual =  $this->Calculator->calculate('D+3', '17');
+		$this->assertEquals('G', $actual);
+	}
 	
+	public function testShouldFWhenDPlus2Base17() {
+		$actual =  $this->Calculator->calculate('D+2', '17');
+		$this->assertEquals('F', $actual);
+	}
+	
+	public function testShould10WhenDPlus4Base17() {
+		$actual =  $this->Calculator->calculate('D+4', '17');
+		$this->assertEquals('10', $actual);
+	}
 	
 }
 ?>

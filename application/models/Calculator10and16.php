@@ -31,6 +31,7 @@ class Calculator10and16 {
 		if ($int == 13) return "D";
 		if ($int == 14) return "E";
 		if ($int == 15) return "F";
+		if ($int == 16) return "G";
 		return $int;
 	}
 	
