@@ -1,15 +1,15 @@
 <?php
 
 require_once 'PHPUnit\Framework\TestCase.php';
-require_once 'application\models\Calculator10and16.php';
+require_once 'application\models\CalculatorX.php';
 
-class Calculator10and16Test extends PHPUnit_Framework_TestCase {
+class CalculatorXTest extends PHPUnit_Framework_TestCase {
 	
 	private $Calculator;
 	
 	protected function setUp() {
 		parent::setUp ();
-		$this->Calculator = new Calculator10and16();
+		$this->Calculator = new CalculatorX();
 	
 	}
 	
@@ -157,6 +157,26 @@ class Calculator10and16Test extends PHPUnit_Framework_TestCase {
 		$this->assertEquals('1579CDB9E21EA8', $actual);
 	}
 **/
+	
+	public function testShouldGWhenDPlus3Base17() {
+		$actual =  $this->Calculator->calculate('D+3', '17');
+		$this->assertEquals('G', $actual);
+	}
+	
+	public function testShouldFWhenDPlus2Base17() {
+		$actual =  $this->Calculator->calculate('D+2', '17');
+		$this->assertEquals('F', $actual);
+	}
+	
+	public function testShould10WhenDPlus4Base17() {
+		$actual =  $this->Calculator->calculate('D+4', '17');
+		$this->assertEquals('10', $actual);
+	}
+	
+	public function testShould20WhenGPlus11Base17() {
+		$actual =  $this->Calculator->calculate('G+11', '17');
+		$this->assertEquals('20', $actual);
+	}
 	
 }
 ?>

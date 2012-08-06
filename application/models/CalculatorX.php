@@ -1,13 +1,13 @@
 <?php
 
 
-class Calculator10and16 {	
+class CalculatorX {	
 	
 	private $Base;
 	
 	public function calculate($expression, $base) {
 		$this->Base = $base;
-		preg_match_all("/[0-9A-F]+/", $expression, $out);
+		preg_match_all("/[0-9A-G]+/", $expression, $out);
 		
 		$sum = $this->toInt($out[0][0]) + 
 			   $this->toInt($out[0][1]);					
@@ -31,6 +31,7 @@ class Calculator10and16 {
 		if ($int == 13) return "D";
 		if ($int == 14) return "E";
 		if ($int == 15) return "F";
+		if ($int == 16) return "G";
 		return $int;
 	}
 	
@@ -50,6 +51,7 @@ class Calculator10and16 {
 		if ($hex == "D") return 13;
 		if ($hex == "E") return 14;
 		if ($hex == "F") return 15;
+		if ($hex == "G") return 16;
 		return $hex;
 	}
 }
