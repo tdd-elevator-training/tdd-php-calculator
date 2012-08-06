@@ -1,7 +1,8 @@
 <?php
 
 
-class Calculator {	
+class Calculator16 {	
+	
 	public function calculate($expression) {
 		preg_match_all("/[0-9A-F]+/", $expression, $out);
 		

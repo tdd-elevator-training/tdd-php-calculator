@@ -1,15 +1,15 @@
 <?php
 
 require_once 'PHPUnit\Framework\TestCase.php';
-require_once 'application\models\Calculator.php';
+require_once 'application\models\Calculator16.php';
 
-class CalculatorTest extends PHPUnit_Framework_TestCase {
+class Calculator16Test extends PHPUnit_Framework_TestCase {
 	
 	private $Calculator;
 	
 	protected function setUp() {
 		parent::setUp ();
-		$this->Calculator = new Calculator();
+		$this->Calculator = new Calculator16();
 	
 	}
 	
