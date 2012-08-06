@@ -100,7 +100,18 @@ class CalculatorTest extends PHPUnit_Framework_TestCase {
 		$actual =  $this->Calculator->calculate('100+1');
 		$this->assertEquals('101', $actual);
 	}
+
+  	public function testShould_1CDE455_When_CDE456_Plus_FFFFFF() {
+		$actual =  $this->Calculator->calculate('CDE456+FFFFFF');
+		$this->assertEquals('1CDE455', $actual);
+	}	
 	
+/** TODO contimue with big int	
+	public function testShouldSubBigInteger() {
+		$actual =  $this->Calculator->calculate('ABCDE657DBEAA+ABCEF54645FFE');
+		$this->assertEquals('1579CDB9E21EA8', $actual);
+	}
+**/
 	
 }
 ?>
