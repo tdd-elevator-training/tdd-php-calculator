@@ -4,10 +4,11 @@
 class CalculatorX {	
 	
 	private $Base;
+	private $Digits = "0123456789ABCDEFG";
 	
 	public function calculate($expression, $base) {
 		$this->Base = $base;
-		preg_match_all("/[0-9A-G]+/", $expression, $out);
+		preg_match_all("/[".$this->Digits."]+/", $expression, $out);
 		
 		$sum = $this->toInt($out[0][0]) + 
 			   $this->toInt($out[0][1]);					
@@ -25,14 +26,7 @@ class CalculatorX {
 	}
 	
 	private function intToHex($int) {		
-		if ($int == 10) return "A";
-		if ($int == 11) return "B";
-		if ($int == 12) return "C";
-		if ($int == 13) return "D";
-		if ($int == 14) return "E";
-		if ($int == 15) return "F";
-		if ($int == 16) return "G";
-		return $int;
+		return $this->Digits[$int];
 	}
 	
 	private function toInt($hex) {
@@ -44,15 +38,7 @@ class CalculatorX {
 	}
 	
 	private function hexToInt($hex) {	
-		if (is_numeric($hex)) return $hex;
-		if ($hex == "A") return 10;
-		if ($hex == "B") return 11;
-		if ($hex == "C") return 12;
-		if ($hex == "D") return 13;
-		if ($hex == "E") return 14;
-		if ($hex == "F") return 15;
-		if ($hex == "G") return 16;
-		return $hex;
+		return strpos($this->Digits, $hex);
 	}
 }
 
