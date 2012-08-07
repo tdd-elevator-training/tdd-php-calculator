@@ -15,10 +15,13 @@ class Calculator {
 		$sum = $this->toInt($out[0][0]) + 
 			   $this->toInt($out[0][1]);	
 
-		if ($base == 16) {
-			if ($sum > 9) {
+		if ($base == 16) {						
+			if ($sum > 16) {
+				$sum = 10 + $sum - 16;
+			} else if ($sum > 9) {
 				return $this->Digits[$sum];
-			} 
+			}
+			 
 			
 		}
 		
