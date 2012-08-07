@@ -23,7 +23,7 @@ class Calculator {
 	private function intToHex($int) {
 		$big = (int)($int / $this->Base);
 		if ($big <> 0) {
-			return $this->toHex($big).$this->toHex($int % $this->Base);
+			return $this->intToHex($big).$this->intToHex($int % $this->Base);
 		}
 				
 		return $this->toHex($int);
