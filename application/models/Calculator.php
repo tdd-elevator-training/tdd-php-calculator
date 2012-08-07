@@ -4,7 +4,7 @@
 class Calculator {	
 	
 	private $Base;
-	private $Digits = "0123456789ABCDEFG";
+	private $Digits = "0123456789ABCDEF";
 	
 	public function calculate($expression, $base) {
 		$this->Base = $base;
@@ -21,12 +21,12 @@ class Calculator {
 	}
 
 	private function intToHex($int) {
-		$big = (int)($int / $this->Base);
-		if ($big <> 0) {
-			return $this->intToHex($big).$this->intToHex($int % $this->Base);
+		if ($int / $this->Base < 1) {
+			return $this->toHex($int);
 		}
 				
-		return $this->toHex($int);
+		$high = (int)($int / $this->Base);
+		return $this->intToHex($high).$this->intToHex($int % $this->Base);
 	}
 
 	
