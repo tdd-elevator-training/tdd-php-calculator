@@ -40,7 +40,14 @@ class CalculatorTest extends PHPUnit_Framework_TestCase {
 	 */
 	public function testShouldExceptionWhenInvalidExpression() {
 		$actual =  $this->Calculator->calculate('1');
-	}	
+	}
+
+	/**
+	 * @expectedException InvalidArgumentException
+	 */
+	public function testShouldExceptionWhenMoreThanOnePlus() {
+		$actual =  $this->Calculator->calculate('1++3');
+	}
 		
 }
 ?>
