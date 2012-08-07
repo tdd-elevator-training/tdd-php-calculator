@@ -37,6 +37,12 @@ class CalculatorTest extends PHPUnit_Framework_TestCase {
 				array('22', '22', 16, '44'),
 				array('99', '99', 16, '132'),
 				array('100', '1', 16, '101'),
+				array('D', '3', 17, 'G'),
+				array('D', '2', 17, 'F'),
+				array('D', '4', 17, '10'),
+				array('G', '1', 17, '10'),
+				array('G', 'G', 17, '1F'),
+				array('1G', '1G', 17, '3F'),
 		);
 	}
 	

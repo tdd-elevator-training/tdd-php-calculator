@@ -4,7 +4,7 @@
 class Calculator {	
 	
 	private $Base;
-	private $Digits = "0123456789ABCDEF";
+	private $Digits = "0123456789ABCDEFG";
 	
 	public function calculate($expression, $base) {
 		$this->Base = $base;
