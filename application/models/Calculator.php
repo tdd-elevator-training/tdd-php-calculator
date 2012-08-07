@@ -35,11 +35,11 @@ class Calculator {
 	}
 	
 	private function hexToInt($hex) {		
-		if (strlen($hex) == 2) {
-			return $this->Base*$this->hexToInt(substr($hex, 0, 1)) + $this->hexToInt(substr($hex, 1, 1));
+		$sum = 0;
+		for ($index = 0; $index < strlen($hex); $index++) {
+			$sum = $this->Base*$sum + $this->toInt(substr($hex, $index, 1));
 		}
-		
-		return $this->toInt ($hex);
+		return $sum;
 
 	}
 	
