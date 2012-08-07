@@ -13,6 +13,10 @@ class Calculator {
 		if (count($out[0]) < 2 || substr_count($expression, '+') != 1) {
 			throw new RuntimeException('Invalid expression format');
 		}
+		
+		if ($this->isInvalidNumber($out[0][0])) {
+			throw new RuntimeException('Invalid expression format');
+		}
 			
 		$sum = $this->hexToInt($out[0][0]) + 
 			   $this->hexToInt($out[0][1]);	
@@ -20,6 +24,14 @@ class Calculator {
 		return $this->intToHex ($sum);
 	}
 
+	private function isInvalidNumber($hex) {
+		$is_invalid = false;
+		for ($index = 0; $index < strlen($hex); $index++) {
+			$is_invalid |= $this->toInt($hex[$index]) >= $this->Base;				
+		}			
+		return $is_invalid;		
+	}
+	
 	private function intToHex($int) {
 		if ($int / $this->Base < 1) {
 			return $this->toHex($int);
