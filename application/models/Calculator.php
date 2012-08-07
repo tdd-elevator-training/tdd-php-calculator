@@ -13,8 +13,13 @@ class Calculator {
 		$sum = (int)($out[0][0]) + 
 			   (int)($out[0][1]);	
 
-		if ($sum == 10 && $base == 16) {
-			return "A";
+		if ($base == 16) {
+			if ($sum == 10) {
+				return "A";
+			} else if ($sum == 15) {
+				return "F";
+			} 
+			
 		}
 		
 		return $sum;
