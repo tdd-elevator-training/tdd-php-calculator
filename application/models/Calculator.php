@@ -14,8 +14,8 @@ class Calculator {
 			throw new RuntimeException('Invalid expression format');
 		}
 			
-		$sum = $this->toInt($out[0][0]) + 
-			   $this->toInt($out[0][1]);	
+		$sum = $this->hexToInt($out[0][0]) + 
+			   $this->hexToInt($out[0][1]);	
 
 		return $this->intToHex ($sum);
 	}
@@ -34,14 +34,20 @@ class Calculator {
 		return $this->Digits[$int];
 	}
 	
-	private function toInt($hex) {		
+	private function hexToInt($hex) {		
 		if (strlen($hex) == 2) {
-			return $this->Base*$this->toInt(substr($hex, 0, 1)) + $this->toInt(substr($hex, 1, 1));
+			return $this->Base*$this->hexToInt(substr($hex, 0, 1)) + $this->hexToInt(substr($hex, 1, 1));
 		}
 		
+		return $this->toInt ($hex);
+
+	}
+	
+	private function toInt($hex) {
 		if (is_numeric($hex)) return $hex; 
 		return strpos($this->Digits, $hex);
 	}
+
 }
 
 ?>
