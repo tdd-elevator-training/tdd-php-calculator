@@ -17,15 +17,13 @@ class Calculator {
 
 		if ($base == 16) {						
 			if ($sum > 16) {
-				$sum = 10 + $sum - 16;
+				return '1'.($sum - 16);
 			} else if ($sum > 9) {
 				return $this->Digits[$sum];
-			}
-			 
-			
+			}			 		
 		}
 		
-		return $sum;
+		return (string)$sum;
 	}
 	
 	private function toInt($hex) {
