@@ -27,8 +27,7 @@ class Calculator {
 	}
 	
 	private function toHex($int) {
-		if ($int == 11) return "B";
-		return $int;
+		return $this->Digits[$int];
 	}
 	
 	private function toInt($hex) {
