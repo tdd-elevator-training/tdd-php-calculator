@@ -95,6 +95,13 @@ class CalculatorTest extends PHPUnit_Framework_TestCase {
 	public function testShouldExceptionWhenIUseNotExistsSymbols4() {
 		$this->Calculator->calculate('QWE+ASD', '17');
 	}
+	
+	/**
+	 * @expectedException InvalidArgumentException
+	 */
+	public function testShouldExceptionWhenBaseIsMoreThan17() {
+		$this->Calculator->calculate('1+1', '18');
+	}
 		
 }
 ?>

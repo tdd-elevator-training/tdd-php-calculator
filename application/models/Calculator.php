@@ -13,6 +13,10 @@ class Calculator {
 			throw new RuntimeException('Invalid number');
 		}
 		
+		if ($base > strlen($this->Digits)) {
+			throw new RuntimeException('Invalid base');
+		}
+		
 		preg_match_all('/['.$this->Digits.']+/', $expression, $out);
 		
 		if (count($out[0]) < 2 || substr_count($expression, '+') != 1) {
