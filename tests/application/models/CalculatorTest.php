@@ -20,16 +20,17 @@ class CalculatorTest extends PHPUnit_Framework_TestCase {
 	
 	public static function provider() {
 		return array(
-				array(2, 2, 10, 4),
-				array(3, 4, 10, 7),
-				array(11, 22, 10, 33),
-				array(9, 1, 16, A),
-				array(6, 9, 16, F),
-				array(6, 8, 16, E),
-				array(A, 5, 16, F),
-				array(1, E, 16, F),
-				array(2, B, 16, D),
-				array(B, E, 16, 19),
+				array('2', '2', 10, '4'),
+				array('3', '4', 10, '7'),
+				array('11', '22', 10, '33'),
+				array('9', '1', 16, 'A'),
+				array('6', '9', 16, 'F'),
+				array('6', '8', 16, 'E'),
+				array('A', '5', 16, 'F'),
+				array('1', 'E', 16, 'F'),
+				array('2', 'B', 16, 'D'),
+				array('B', 'E', 16, '19'),
+				array('C', 'F', 16, '1B'),
 		);
 	}
 	
