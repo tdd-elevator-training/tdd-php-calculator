@@ -13,7 +13,7 @@ class Calculator {
 			throw new RuntimeException('Invalid number');
 		}
 		
-		if ($base > strlen($this->Digits)) {
+		if ($base > strlen($this->Digits) || $base <= 1) {
 			throw new RuntimeException('Invalid base');
 		}
 		

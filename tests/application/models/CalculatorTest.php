@@ -43,6 +43,7 @@ class CalculatorTest extends PHPUnit_Framework_TestCase {
 				array('G', '1', 17, '10'),
 				array('G', 'G', 17, '1F'),
 				array('1G', '1G', 17, '3F'),
+				array('1010101010', '0101010101', 2, '1111111111'),
 		);
 	}
 	
@@ -101,6 +102,13 @@ class CalculatorTest extends PHPUnit_Framework_TestCase {
 	 */
 	public function testShouldExceptionWhenBaseIsMoreThan17() {
 		$this->Calculator->calculate('1+1', '18');
+	}
+	
+	/**
+	 * @expectedException InvalidArgumentException
+	 */
+	public function testShouldExceptionWhenBaseIsLessThan2() {
+		$this->Calculator->calculate('0+0', '1');
 	}
 		
 }
