@@ -17,17 +17,12 @@ class Calculator {
 		$sum = $this->toInt($out[0][0]) + 
 			   $this->toInt($out[0][1]);	
 
-		if ($base == 16) {						
-			if ($sum >= $base*2) {
-				return '2'.$this->toHex($sum - 32);
-			} else if ($sum > $base) {
-				return '1'.$this->toHex($sum - 16);
-			} else if ($sum > 9) {
-				return $this->Digits[$sum];
-			}			 		
+		$big = (int)($sum / $base);
+		if ($big <> 0) {
+			return $this->toHex($big).$this->toHex($sum % $base);
 		}
 				
-		return (string)$sum;
+		return $this->toHex($sum);
 	}
 	
 	private function toHex($int) {
