@@ -27,8 +27,7 @@ class Calculator {
 	
 	private function toInt($hex) {
 		if (is_numeric($hex)) return $hex; 
-		if ($hex == "A") return 10;
-		if ($hex == "E") return 14;
+		return strpos($this->Digits, $hex);
 	}
 }
 
