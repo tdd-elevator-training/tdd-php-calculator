@@ -18,20 +18,22 @@ class CalculatorTest extends PHPUnit_Framework_TestCase {
 		parent::tearDown ();
 	}
 	
-	public function testShould4When2Plus2() {
-		$actual =  $this->Calculator->calculate('2+2');
- 		$this->assertEquals('4', $actual);
-	}	
-	
-	public function testShould7When3Plus4() {
-		$actual =  $this->Calculator->calculate('3+4');
-		$this->assertEquals('7', $actual);
+	public static function provider()
+	{
+		return array(
+				array(2, 2, 4),
+				array(3, 4, 7),
+				array(11, 22, 33),
+		);
 	}
 	
-	public function testShould33When11Plus22() {
-		$actual =  $this->Calculator->calculate('11+22');
-		$this->assertEquals('33', $actual);
+	/**
+	 * @dataProvider provider
+	 */
+	public function testShouldSumWhenXPlusY($x, $y, $expected) {
+		$actual =  $this->Calculator->calculate($x.'+'.$y);
+		$this->assertEquals($expected, $actual);
 	}
-	
+		
 }
 ?>
