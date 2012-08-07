@@ -3,6 +3,8 @@
 
 class Calculator {	
 	
+	private $Digits = "0123456789ABCDEF";
+	
 	public function calculate($expression, $base) {
 		preg_match_all("/[0-9]+/", $expression, $out);
 		
@@ -14,10 +16,8 @@ class Calculator {
 			   (int)($out[0][1]);	
 
 		if ($base == 16) {
-			if ($sum == 10) {
-				return "A";
-			} else if ($sum == 15) {
-				return "F";
+			if ($sum > 9) {
+				return $this->Digits[$sum];
 			} 
 			
 		}
