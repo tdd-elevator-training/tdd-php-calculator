@@ -58,21 +58,35 @@ class CalculatorTest extends PHPUnit_Framework_TestCase {
 	 * @expectedException InvalidArgumentException
 	 */
 	public function testShouldExceptionWhenInvalidExpression() {
-		$actual =  $this->Calculator->calculate('1', '10');
+		$this->Calculator->calculate('1', '10');
 	}
 
 	/**
 	 * @expectedException InvalidArgumentException
 	 */
 	public function testShouldExceptionWhenMoreThanOnePlus() {
-		$actual =  $this->Calculator->calculate('1++3', '10');
+		$this->Calculator->calculate('1++3', '10');
 	}
 	
 	/**
 	 * @expectedException InvalidArgumentException
 	 */
 	public function testShouldExceptionWhenIUseNotExistsSymbols() {
-		$actual =  $this->Calculator->calculate('G+1', '16');
+		$this->Calculator->calculate('G+1', '16');
+	}
+	
+	/**
+	 * @expectedException InvalidArgumentException
+	 */
+	public function testShouldExceptionWhenIUseNotExistsSymbols2() {
+		$this->Calculator->calculate('10300+1', '2');
+	}
+	
+	/**
+	 * @expectedException InvalidArgumentException
+	 */
+	public function testShouldExceptionWhenIUseNotExistsSymbols3() {
+		$this->Calculator->calculate('1+1A1', '4');
 	}
 		
 }

@@ -14,7 +14,7 @@ class Calculator {
 			throw new RuntimeException('Invalid expression format');
 		}
 		
-		if ($this->isInvalidNumber($out[0][0])) {
+		if ($this->isInvalidNumber($out[0][0]) || $this->isInvalidNumber($out[0][1])) {
 			throw new RuntimeException('Invalid expression format');
 		}
 			
