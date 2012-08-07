@@ -26,6 +26,7 @@ class CalculatorTest extends PHPUnit_Framework_TestCase {
 				array(9, 1, 16, A),
 				array(6, 9, 16, F),
 				array(6, 8, 16, E),
+				array(A, 5, 16, F),
 		);
 	}
 	
