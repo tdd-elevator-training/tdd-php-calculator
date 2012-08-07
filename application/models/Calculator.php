@@ -4,7 +4,12 @@
 class Calculator {	
 	
 	public function calculate($expression) {
-		return substr($expression, 0, 1) + substr($expression, 1, 2);	
+		preg_match_all("/[0-9]+/", $expression, $out);
+		
+		$sum = (int)($out[0][0]) + 
+			   (int)($out[0][1]);	
+		
+		return $sum;
 	}
 }
 
