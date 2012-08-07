@@ -18,20 +18,19 @@ class CalculatorTest extends PHPUnit_Framework_TestCase {
 		parent::tearDown ();
 	}
 	
-	public static function provider()
-	{
+	public static function provider() {
 		return array(
-				array(2, 2, 4),
-				array(3, 4, 7),
-				array(11, 22, 33),
+				array(2, 2, 10, 4),
+				array(3, 4, 10, 7),
+				array(11, 22, 10, 33),
 		);
 	}
 	
 	/**
 	 * @dataProvider provider
 	 */
-	public function testShouldSumWhenXPlusY($x, $y, $expected) {
-		$actual =  $this->Calculator->calculate($x.'+'.$y);
+	public function testShouldSumWhenXPlusY($x, $y, $base, $expected) {
+		$actual =  $this->Calculator->calculate($x.'+'.$y, $base);
 		$this->assertEquals($expected, $actual);
 	}
 	

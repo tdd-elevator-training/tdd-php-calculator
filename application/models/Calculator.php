@@ -3,7 +3,7 @@
 
 class Calculator {	
 	
-	public function calculate($expression) {
+	public function calculate($expression, $base) {
 		preg_match_all("/[0-9]+/", $expression, $out);
 		
 		if (count($out[0]) < 2 || substr_count($expression, '+') != 1) {
