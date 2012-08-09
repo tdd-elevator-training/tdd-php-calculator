@@ -44,12 +44,12 @@ class Calculator {
 	
 	private function intToHex($int) {
 		$result = '';
-		$high = $int;
+		$low = $int;
 		do {
-			$low = $high % $this->Base;
-			$high = (int)$high / $this->Base;
-			$result = $this->toHex($low).$result;
-		} while ($high >= 1);
+			$high = $low % $this->Base;
+			$low = (int)$low / $this->Base;
+			$result = $this->toHex($high).$result;
+		} while ($low >= 1);
 		
 		return $result;
 	}
