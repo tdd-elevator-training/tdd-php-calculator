@@ -5,8 +5,10 @@ class CalculatorLegacy {
 
 	public function calculate($expr, $base) {
 		$b = false;
+		$pos = 0;
 		for ($i = 0; $i < strlen($expr); $i++) {
 			if ($expr[$i] == '+') {
+				$pos = $i;
 				continue;
 			}
 				
@@ -23,23 +25,25 @@ class CalculatorLegacy {
 			throw new RuntimeException('Invalid base');
 		}
 		
-		preg_match_all('/[0-9A-G]+/', $expr, $out);
+		$out = substr($expr, 0, $pos);
 		
-		if (count($out[0]) < 2 || substr_count($expr, '+') != 1) {
+		if ($pos == 0 || $pos == strlen($expr) || substr_count($expr, '+') != 1) {
 			throw new RuntimeException('Invalid expression format');
 		}		
 		
 		$sum = 0;
-		for ($i = 0; $i < strlen($out[0][0]) ; $i++) {
-			$c = substr($out[0][0], $i, 1);
+		for ($i = 0; $i < strlen($out) ; $i++) {
+			$c = substr($out, $i, 1);
 			$sum = $base*$sum + (int)((is_numeric($c))?$c:strpos("0123456789ABCDEFG", $c));
 		}
 		
+		$out = substr($expr, $pos + 1, strlen($expr));
+		
 		$sum2 = 0;
-		for ($i = strlen($out[0][1]) - 1; $i >= 0; $i--) {
-			$c = substr($out[0][1], $i, 1);
+		for ($i = strlen($out) - 1; $i >= 0; $i--) {
+			$c = substr($out, $i, 1);
 			$a = (!is_numeric($c))?strpos("0123456789ABCDEFG", $c):$c;
-			$sum2 += $a*pow($base, strlen($out[0][1]) - $i - 1);
+			$sum2 += $a*pow($base, strlen($out) - $i - 1);
 		}
 	
 		$sum += $sum2;
