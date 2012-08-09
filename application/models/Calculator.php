@@ -48,7 +48,7 @@ class Calculator {
 		}
 				
 		$high = (int)($int / $this->Base);
-		return $this->intToHex($high).$this->intToHex($int % $this->Base);
+		return $this->intToHex($high).$this->toHex($int % $this->Base);
 	}
 
 	
