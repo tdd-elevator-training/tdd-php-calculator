@@ -43,12 +43,15 @@ class Calculator {
 	}
 	
 	private function intToHex($int) {
-		if ($int / $this->Base < 1) {
-			return $this->toHex($int);
-		}
-				
-		$high = (int)($int / $this->Base);
-		return $this->intToHex($high).$this->toHex($int % $this->Base);
+		$result = '';
+		$high = $int;
+		do {
+			$low = $high % $this->Base;
+			$high = (int)$high / $this->Base;
+			$result = $this->toHex($low).$result;
+		} while ($high >= 1);
+		
+		return $result;
 	}
 
 	
