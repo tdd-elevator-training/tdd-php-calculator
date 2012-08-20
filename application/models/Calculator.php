@@ -4,9 +4,6 @@ require_once 'application\models\Convertor.php';
 
 class Calculator {	
 	
-	private $Base;
-	private $Digits = "0123456789ABCDEFG";
-	
 	public function calculate($expression, $base) {
 		$this->Base = $base;
 		$convertor = new Convertor($base);
