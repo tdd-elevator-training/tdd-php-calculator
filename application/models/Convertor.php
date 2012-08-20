@@ -10,19 +10,7 @@ class Convertor {
 		$this->Base = $base;
 	}
 	
-	public function decode($hex) {
-		return $this->hexToInt($hex);
-	}
-	
-	public function code($hex) {
-		return $this->intToHex($hex);
-	}
-	
-	public function isValid($hex) {
-		return !$this->isContainsInvalidNumber($hex);
-	}
-	
-	private function intToHex($int) {
+	public function code($int) {
 		$result = '';
 		$low = $int;
 		do {
@@ -39,7 +27,7 @@ class Convertor {
 		return $this->Digits[$int];
 	}
 	
-	private function hexToInt($hex) {
+	public function decode($hex) {
 		$sum = 0;
 		for ($index = 0; $index < strlen($hex); $index++) {
 			$sum = $this->Base*$sum + $this->toInt(substr($hex, $index, 1));
@@ -53,7 +41,7 @@ class Convertor {
 		return strpos($this->Digits, $hex);
 	}
 	
-	private function isContainsInvalidNumber($expression) {
+	public function isValid($expression) {
 		$is_invalid = false;
 		for ($index = 0; $index < strlen($expression); $index++) {
 			if ($expression[$index] == '+') {
@@ -63,7 +51,7 @@ class Convertor {
 			$int = $this->toInt($expression[$index]);
 			$is_invalid |= ($int === false) || $int >= $this->Base;
 		}
-		return $is_invalid;
+		return !$is_invalid;
 	}
 }
 
