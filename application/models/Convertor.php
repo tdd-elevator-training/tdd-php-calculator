@@ -6,21 +6,19 @@ class Convertor {
 	private $Base;
 	private $Digits = "0123456789ABCDEFG";
 	
-	public function decode($hex, $base) {
+	public function __construct($base) {
 		$this->Base = $base;
-		
+	}
+	
+	public function decode($hex) {
 		return $this->hexToInt($hex);
 	}
 	
-	public function code($hex, $base) {
-		$this->Base = $base;
-	
+	public function code($hex) {
 		return $this->intToHex($hex);
 	}
 	
-	public function isValid($hex, $base) {
-		$this->Base = $base;
-	
+	public function isValid($hex) {
 		return !$this->isContainsInvalidNumber($hex);
 	}
 	

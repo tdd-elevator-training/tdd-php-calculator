@@ -9,7 +9,7 @@ class ConvertorTest extends PHPUnit_Framework_TestCase {
 	
 	protected function setUp() {
 		parent::setUp ();
-		$this->Convertor = new Convertor();
+		$this->Convertor = new Convertor(16);
 	
 	}
 	
@@ -19,21 +19,21 @@ class ConvertorTest extends PHPUnit_Framework_TestCase {
 	}
 	
 	public function testShouldConvertHexToInt() {
-		$actual =  $this->Convertor->decode('1ABC', '16');
+		$actual =  $this->Convertor->decode('1ABC');
 		$this->assertEquals(6844, $actual);
 	}
 	
 	public function testShouldConvertIntToHex() {
-		$actual =  $this->Convertor->code('6844', '16');
+		$actual =  $this->Convertor->code('6844');
 		$this->assertEquals('1ABC', $actual);
 	}
 	
 	public function testShouldValidateTrueIfValid() {
-		$this->assertTrue($this->Convertor->isValid('6844', '16'));
+		$this->assertTrue($this->Convertor->isValid('6844'));
 	}
 	
 	public function testShouldValidateFalseIfInvalid() {
-		$this->assertFalse($this->Convertor->isValid('6844', '2'));
+		$this->assertFalse($this->Convertor->isValid('1ABG'));
 	}
 	
 }
