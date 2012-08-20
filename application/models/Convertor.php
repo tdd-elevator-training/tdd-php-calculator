@@ -18,6 +18,12 @@ class Convertor {
 		return $this->intToHex($hex);
 	}
 	
+	public function isValid($hex, $base) {
+		$this->Base = $base;
+	
+		return !$this->isContainsInvalidNumber($hex);
+	}
+	
 	private function intToHex($int) {
 		$result = '';
 		$low = $int;
@@ -47,6 +53,19 @@ class Convertor {
 	private function toInt($hex) {
 		if (is_numeric($hex)) return $hex;
 		return strpos($this->Digits, $hex);
+	}
+	
+	private function isContainsInvalidNumber($expression) {
+		$is_invalid = false;
+		for ($index = 0; $index < strlen($expression); $index++) {
+			if ($expression[$index] == '+') {
+				continue;
+			}
+				
+			$int = $this->toInt($expression[$index]);
+			$is_invalid |= ($int === false) || $int >= $this->Base;
+		}
+		return $is_invalid;
 	}
 }
 

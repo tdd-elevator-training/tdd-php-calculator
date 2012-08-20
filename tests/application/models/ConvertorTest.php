@@ -27,6 +27,14 @@ class ConvertorTest extends PHPUnit_Framework_TestCase {
 		$actual =  $this->Convertor->code('6844', '16');
 		$this->assertEquals('1ABC', $actual);
 	}
-		
+	
+	public function testShouldValidateTrueIfValid() {
+		$this->assertTrue($this->Convertor->isValid('6844', '16'));
+	}
+	
+	public function testShouldValidateFalseIfInvalid() {
+		$this->assertFalse($this->Convertor->isValid('6844', '2'));
+	}
+	
 }
 ?>
