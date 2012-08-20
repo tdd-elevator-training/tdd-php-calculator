@@ -12,6 +12,29 @@ class Convertor {
 		return $this->hexToInt($hex);
 	}
 	
+	public function code($hex, $base) {
+		$this->Base = $base;
+	
+		return $this->intToHex($hex);
+	}
+	
+	private function intToHex($int) {
+		$result = '';
+		$low = $int;
+		do {
+			$high = $low % $this->Base;
+			$low = (int)$low / $this->Base;
+			$result = $this->toHex($high).$result;
+		} while ($low >= 1);
+	
+		return $result;
+	}
+	
+	
+	private function toHex($int) {
+		return $this->Digits[$int];
+	}
+	
 	private function hexToInt($hex) {
 		$sum = 0;
 		for ($index = 0; $index < strlen($hex); $index++) {

@@ -22,6 +22,11 @@ class ConvertorTest extends PHPUnit_Framework_TestCase {
 		$actual =  $this->Convertor->decode('1ABC', '16');
 		$this->assertEquals(6844, $actual);
 	}
+	
+	public function testShouldConvertIntToHex() {
+		$actual =  $this->Convertor->code('6844', '16');
+		$this->assertEquals('1ABC', $actual);
+	}
 		
 }
 ?>
