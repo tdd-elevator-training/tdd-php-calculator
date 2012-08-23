@@ -7,6 +7,10 @@ class Convertor {
 	private $Digits = "0123456789ABCDEFG";
 	
 	public function __construct($base) {
+		if ($base > strlen($this->Digits) || $base <= 1) { 
+			throw new RuntimeException('Invalid base');
+		}
+		
 		$this->Base = $base;
 	}
 	
@@ -44,10 +48,6 @@ class Convertor {
 	public function isValid($expression) {
 		$is_invalid = false;
 		for ($index = 0; $index < strlen($expression); $index++) {
-			if ($expression[$index] == '+') {
-				continue;
-			}
-				
 			$int = $this->toInt($expression[$index]);
 			$is_invalid |= ($int === false) || $int >= $this->Base;
 		}
