@@ -4,20 +4,7 @@ require_once 'PHPUnit\Framework\TestCase.php';
 require_once 'application\models\Calculator.php';
 
 class CalculatorTest extends PHPUnit_Framework_TestCase {
-		
-	private $Calculator;
-	
-	protected function setUp() {
-		parent::setUp ();
-		$this->Calculator = new Calculator();
-	
-	}
-	
-	protected function tearDown() {
-		$this->Calculator = null;
-		parent::tearDown ();
-	}
-	
+			
 	public static function provider() {
 		return array(
 				array('2', '2', 10, '4'),
@@ -51,7 +38,8 @@ class CalculatorTest extends PHPUnit_Framework_TestCase {
 	 * @dataProvider provider
 	 */
 	public function testShouldSumWhenXPlusY($x, $y, $base, $expected) {
-		$actual =  $this->Calculator->calculate($x.'+'.$y, $base);
+		$calculator = new Calculator(new Convertor($base));
+		$actual =  $calculator->calculate($x.'+'.$y);
 		$this->assertEquals($expected, $actual);
 	}
 	
@@ -59,56 +47,64 @@ class CalculatorTest extends PHPUnit_Framework_TestCase {
 	 * @expectedException InvalidArgumentException
 	 */
 	public function testShouldExceptionWhenInvalidExpression() {
-		$this->Calculator->calculate('1', '10');
+		$calculator = new Calculator(new Convertor('10'));
+		$calculator->calculate('1');
 	}
 
 	/**
 	 * @expectedException InvalidArgumentException
 	 */
 	public function testShouldExceptionWhenMoreThanOnePlus() {
-		$this->Calculator->calculate('1++3', '10');
+		$calculator = new Calculator(new Convertor('10'));
+		$calculator->calculate('1++3');
 	}
 	
 	/**
 	 * @expectedException InvalidArgumentException
 	 */
 	public function testShouldExceptionWhenIUseNotExistsSymbols() {
-		$this->Calculator->calculate('G+1', '16');
+		$calculator = new Calculator(new Convertor('16'));
+		$calculator->calculate('G+1');
 	}
 	
 	/**
 	 * @expectedException InvalidArgumentException
 	 */
 	public function testShouldExceptionWhenIUseNotExistsSymbols2() {
-		$this->Calculator->calculate('10300+1', '2');
+		$calculator = new Calculator(new Convertor('2'));
+		$calculator->calculate('10300+1');
 	}
 	
 	/**
 	 * @expectedException InvalidArgumentException
 	 */
 	public function testShouldExceptionWhenIUseNotExistsSymbols3() {
-		$this->Calculator->calculate('1+1A1', '4');
+		$calculator = new Calculator(new Convertor('4'));
+		$calculator->calculate('1+1A1');
 	}
 	
 	/**
 	 * @expectedException InvalidArgumentException
 	 */
 	public function testShouldExceptionWhenIUseNotExistsSymbols4() {
-		$this->Calculator->calculate('QWE+ASD', '17');
+		$calculator = new Calculator(new Convertor('17'));
+		$calculator->calculate('QWE+ASD');
 	}
 	
 	/**
 	 * @expectedException InvalidArgumentException
 	 */
 	public function testShouldExceptionWhenBaseIsMoreThan17() {
-		$this->Calculator->calculate('1+1', '18');
+		$calculator = new Calculator(new Convertor('18'));
+		$calculator->calculate('1+1');
 	}
 	
 	/**
 	 * @expectedException InvalidArgumentException
 	 */
 	public function testShouldExceptionWhenBaseIsLessThan2() {
-		$this->Calculator->calculate('0+0', '1');
+		$calculator = new Calculator(new Convertor('1'));
+		$calculator->calculate('0+0');
 	}
 		
 }

@@ -45,10 +45,10 @@ class Convertor {
 		return strpos($this->Digits, $hex);
 	}
 	
-	public function isValid($expression) {
+	public function isValid($hex) {
 		$is_invalid = false;
-		for ($index = 0; $index < strlen($expression); $index++) {
-			$int = $this->toInt($expression[$index]);
+		for ($index = 0; $index < strlen($hex); $index++) {
+			$int = $this->toInt($hex[$index]);
 			$is_invalid |= ($int === false) || $int >= $this->Base;
 		}
 		return !$is_invalid;
